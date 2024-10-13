@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./nomad/startup.nix
     ];
   environment.systemPackages = with pkgs; [
     vim

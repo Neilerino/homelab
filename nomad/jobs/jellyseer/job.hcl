@@ -13,7 +13,7 @@ job "jellyseer" {
 
         network {
             port "http" {
-                static = 8080
+                static = 5055
             }
         }
 
@@ -34,6 +34,9 @@ job "jellyseer" {
             resources {
                 cpu    = 500
                 memory = 512
+            }
+            env {
+                PORT = "5055"
             }
         }
     }

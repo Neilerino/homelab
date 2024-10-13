@@ -25,7 +25,7 @@ job "jellyfin" {
 
     network {
       port "http" {
-        static = 5055
+        static = 8096
       }
     }
     
@@ -58,10 +58,6 @@ job "jellyfin" {
       resources {
         cpu    = 500    # 500 MHz
         memory = 1024    # 512 MB
-      }
-
-      env {
-        PORT = "5055"
       }
     }
   }
