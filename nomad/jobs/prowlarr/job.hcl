@@ -28,6 +28,7 @@ job "prowlarr" {
 
             config {
                 image = "lscr.io/linuxserver/prowlarr:latest"
+                hostname = "prowlarr"
                 ports = ["http"]
             }
 

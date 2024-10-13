@@ -40,6 +40,7 @@ job "sabnzbd" {
 
             config {
                 image = "linuxserver/sabnzbd:latest"
+                hostname = "sabnzbd"
                 ports = ["http"]
             }
 

@@ -52,6 +52,7 @@ job "radarr" {
 
             config {
                 image = "lscr.io/linuxserver/radarr:latest"
+                hostname = "radarr"
                 ports = ["http"]
             }
 

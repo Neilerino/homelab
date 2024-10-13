@@ -29,7 +29,7 @@
 
   services.nomad = import ./nomad/service.nix { inherit pkgs; };
 
-  networking.firewall.allowedTCPPorts = [ 4646 8096 8080 ];
+  networking.firewall.allowedTCPPorts = [ 4646 8096 8080 7878 5055 8989 ];
   networking.firewall.allowedUDPPorts = [ 8096 ];
 
   time.timeZone = "America/St_Johns";

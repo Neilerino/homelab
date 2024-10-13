@@ -52,6 +52,7 @@ job "sonarr" {
 
             config {
                 image = "lscr.io/linuxserver/sonarr:latest"
+                hostname = "sonarr"
                 ports = ["http"]
             }
 

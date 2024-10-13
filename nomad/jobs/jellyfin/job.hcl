@@ -52,6 +52,7 @@ job "jellyfin" {
 
       config {
         image = "jellyfin/jellyfin:latest"
+        hostname = "jellyfin"
         ports = ["http"]
       }
 

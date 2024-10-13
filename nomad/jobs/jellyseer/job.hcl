@@ -28,6 +28,7 @@ job "jellyseer" {
 
             config {
                 image = "fallenbagel/jellyseerr"
+                hostname = "jellyseer"
                 ports = ["http"]
             }
 

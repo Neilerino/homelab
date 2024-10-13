@@ -28,6 +28,7 @@ job "heimdall" {
 
             config {
                 image = "lscr.io/linuxserver/heimdall:latest"
+                hostname = "heimdall"
                 ports = ["http"]
             }
 
