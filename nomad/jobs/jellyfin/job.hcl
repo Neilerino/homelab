@@ -65,6 +65,7 @@ job "jellyfin" {
         PUID = "1004"
         PGID = "1000"
         UMASK = "002"
+      }
     }
   }
 }
