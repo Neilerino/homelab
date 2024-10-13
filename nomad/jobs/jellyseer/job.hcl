@@ -27,7 +27,7 @@ job "jellyseer" {
             }
 
             config {
-                image = "jellyfin/jellyseer:latest"
+                image = "fallenbagel/jellyseerr"
                 ports = ["http"]
             }
 
