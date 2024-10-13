@@ -64,7 +64,7 @@
     home = "/var/lib/jellyfin";   # Define home directory
     createHome = true;          # Create the home directory if it doesn't exist
     shell = pkgs.bash;          # Optional: set the default shell
-  }
+  };
 
   users.users.sabnzbd = {
     isSystemUser = true;
@@ -74,7 +74,7 @@
     home = "/var/lib/sabnzbd";   # Define home directory
     createHome = true;          # Create the home directory if it doesn't exist
     shell = pkgs.bash;          # Optional: set the default shell
-  }
+  };
 
   systemd.tmpfiles.rules = [
     # Create and set ownership/permissions for Sonarr directories
