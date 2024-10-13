@@ -61,6 +61,8 @@ job "jellyfin" {
         memory = 1024    # 512 MB
       }
 
+      user = "1004:1000"
+
       env {
         PUID = "1004"
         PGID = "1000"

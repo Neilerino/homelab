@@ -55,6 +55,8 @@ job "radarr" {
                 memory = 1024
             }
 
+            user = "1002:1000"
+
             env {
                 PUID = "1002"
                 PGID = "1000"
