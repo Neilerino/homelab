@@ -6,7 +6,7 @@ let
   jellyseerVols = import ./jobs/jellyseer/volume.nix { inherit pkgs; };
 
   volumes = jellyfinVols // sabnzbdVols // jellyseerVols;
-  
+
 in
 {
   enable = true;
@@ -26,7 +26,7 @@ in
       options = {
           "docker.enable_host_volumes" = true;
       };
-      client_volume = volumes;
+      host_volume = volumes;
     };
     server = {
       enabled = true;
