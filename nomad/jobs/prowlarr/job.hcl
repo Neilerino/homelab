@@ -36,6 +36,10 @@ job "prowlarr" {
                 cpu    = 500
                 memory = 512
             }
+            env {
+                PUID = "1000"
+                PGID = "1000"
+            }
         }
     }
 }

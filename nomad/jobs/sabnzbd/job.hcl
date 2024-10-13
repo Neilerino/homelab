@@ -48,6 +48,10 @@ job "sabnzbd" {
                 cpu    = 1000
                 memory = 1024
             }
+            env {
+                PUID = "1000"
+                PGID = "1000"
+            }
         }
     }
 }
