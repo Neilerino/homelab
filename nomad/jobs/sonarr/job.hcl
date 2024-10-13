@@ -62,7 +62,7 @@ job "sonarr" {
             }
 
             env {
-                PUID = "1000"
+                PUID = "1002"
                 PGID = "1000"
             }
         }

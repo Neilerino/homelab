@@ -38,7 +38,7 @@
 
   users.users.sonarr = {
     isSystemUser = true;
-    uid = 1000;                # Set the UID to 1000
+    uid = 1002;                # Set the UID to 1000
     group = "media";            # Primary group
     extraGroups = [ "docker" ]; # Add to the Docker group if needed
     home = "/var/lib/sonarr";   # Define home directory
