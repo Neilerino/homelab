@@ -23,7 +23,7 @@ job "jellyseer" {
             volume_mount {
                 volume = "config"
                 read_only = false
-                destination = "/config"
+                destination = "/app/config"
             }
 
             config {
