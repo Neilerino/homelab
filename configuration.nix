@@ -32,11 +32,35 @@
   networking.firewall.allowedTCPPorts = [ 4646 8096 8080 7878 5055 8989 ];
   networking.firewall.allowedUDPPorts = [ 8096 ];
 
+  users.groups.media = {
+    gid = 1000;
+  };
+
+  users.users.sonarr = {
+    isSystemUser = true;
+    uid = 1000;                # Set the UID to 1000
+    group = "media";            # Primary group
+    extraGroups = [ "docker" ]; # Add to the Docker group if needed
+    home = "/var/lib/sonarr";   # Define home directory
+    createHome = true;          # Create the home directory if it doesn't exist
+    shell = pkgs.bash;          # Optional: set the default shell
+  };
+
+  users.users.radarr = {
+    isSystemUser = true;
+    uid = 1001;                # Set the UID to 1000
+    group = "media";            # Primary group
+    extraGroups = [ "docker" ]; # Add to the Docker group if needed
+    home = "/var/lib/radarr";   # Define home directory
+    createHome = true;          # Create the home directory if it doesn't exist
+    shell = pkgs.bash;          # Optional: set the default shell
+  };
+
   systemd.tmpfiles.rules = [
     # Create and set ownership/permissions for Sonarr directories
-    "d /home/neil/radarr/config 0755 1000 1000 -"
-    "d /home/neil/media/tv 0755 1000 1000 -"
-    "d /path/to/downloads 0755 1000 1000 -"
+    "d /home/neil/radarr/config 0755 1001 1000 -"
+    "d /home/neil/media/tv 0755 1001 1000 -"
+    "d /path/to/downloads 0755 1001 1000 -"
     
     # Create and set ownership/permissions for Radarr directories
     "d /home/neil/sonarr/config 0755 1000 1000 -"

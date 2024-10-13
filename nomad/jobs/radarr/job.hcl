@@ -60,6 +60,11 @@ job "radarr" {
                 cpu    = 1000
                 memory = 1024
             }
+
+            env {
+                PGID = "1000"
+                PUID = "1001"
+            }
         }
     }
 }
