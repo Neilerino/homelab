@@ -5,10 +5,10 @@ job "jellyfin" {
   group "jellyfin-group" {
     count = 1
 
-    volume "media" {
+    volume "data" {
        type = "host"
        read_only = false
-       source = "media-base"
+       source = "data"
     }
     
     volume "cache" {
@@ -33,9 +33,9 @@ job "jellyfin" {
       driver = "docker"
 
       volume_mount {
-        volume = "media"
+        volume = "data"
         read_only = false
-        destination = "/media"
+        destination = "/data"
       }
 
       volume_mount {
@@ -60,6 +60,11 @@ job "jellyfin" {
         cpu    = 500    # 500 MHz
         memory = 1024    # 512 MB
       }
+
+      env {
+        PUID = "1004"
+        PGID = "1000"
+        UMASK = "002"
     }
   }
 }

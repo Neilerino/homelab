@@ -11,10 +11,10 @@ job "radarr" {
             source = "media-downloads"
         }
 
-        volume "movies" {
+        volume "data" {
             type = "host"
             read_only = false
-            source = "media-movies"
+            source = "data"
         }
 
         volume "config" {
@@ -33,15 +33,9 @@ job "radarr" {
             driver = "docker"
 
             volume_mount {
-                volume = "downloads"
+                volume = "data"
                 read_only = false
-                destination = "/downloads"
-            }
-
-            volume_mount {
-                volume = "movies"
-                read_only = false
-                destination = "/movies"
+                destination = "/data"
             }
 
             volume_mount {
@@ -62,8 +56,8 @@ job "radarr" {
             }
 
             env {
-                PGID = "1000"
                 PUID = "1002"
+                PGID = "1000"
                 UMASK = "002"
             }
         }

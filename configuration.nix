@@ -56,14 +56,42 @@
     shell = pkgs.bash;          # Optional: set the default shell
   };
 
+  users.users.jellyfin = {
+    isSystemUser = true;
+    uid = 1003;                # Set the UID to 1000
+    group = "media";            # Primary group
+    extraGroups = [ "docker" ]; # Add to the Docker group if needed
+    home = "/var/lib/jellyfin";   # Define home directory
+    createHome = true;          # Create the home directory if it doesn't exist
+    shell = pkgs.bash;          # Optional: set the default shell
+  }
+
+  users.users.sabnzbd = {
+    isSystemUser = true;
+    uid = 1004;                # Set the UID to 1000
+    group = "media";            # Primary group
+    extraGroups = [ "docker" ]; # Add to the Docker group if needed
+    home = "/var/lib/sabnzbd";   # Define home directory
+    createHome = true;          # Create the home directory if it doesn't exist
+    shell = pkgs.bash;          # Optional: set the default shell
+  }
+
   systemd.tmpfiles.rules = [
     # Create and set ownership/permissions for Sonarr directories
     "d /home/neil/radarr/config 0755 1002 1000 -"
-    "d /home/neil/media/tv 0755 1002 1000 -"
+    "d /home/neil/data/tv 0755 1002 1000 -"
     
     # Create and set ownership/permissions for Radarr directories
     "d /home/neil/sonarr/config 0755 1001 1000 -"
-    "d /home/neil/media/movies 0755 1001 1000 -"
+    "d /home/neil/data/movies 0755 1001 1000 -"
+
+    # Create and set ownership/permissions for sabnzbd directories
+    "d /home/neil/sabnzbd/config 0755 1004 1000 -"
+    "d /home/neil/data/downloads 0755 1004 1000 -"
+    "d /home/neil/data/incomplete 0755 1004 1000 -"
+
+    # Create and set ownership/permissions for data directory
+    "d /home/neil/data 0755 1000 1000 -"
   ];
 
 

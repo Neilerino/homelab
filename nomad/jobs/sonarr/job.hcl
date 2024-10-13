@@ -5,16 +5,10 @@ job "sonarr" {
     group "sonarr-group" {
         count = 1
 
-        volume "downloads" {
+        volume "data" {
             type = "host"
             read_only = false
-            source = "media-downloads"
-        }
-
-        volume "tv" {
-            type = "host"
-            read_only = false
-            source = "media-tv"
+            source = "data"
         }
 
         volume "config" {
@@ -33,15 +27,9 @@ job "sonarr" {
             driver = "docker"
 
             volume_mount {
-                volume = "downloads"
+                volume = "data"
                 read_only = false
-                destination = "/downloads"
-            }
-
-            volume_mount {
-                volume = "tv"
-                read_only = false
-                destination = "/tv"
+                destination = "/data"
             }
 
             volume_mount {

@@ -1,16 +1,8 @@
 { pkgs, ... }:
 
 {
-  "media-base" = {
-    path = "/home/neil/media";
-    read_only = false;
-  };
-  "media-movies" = {
-    path = "/home/neil/media/movies";
-    read_only = false;
-  };
-  "media-tv" = {
-    path = "/home/neil/media/tv";
+  "data" = {
+    path = "/home/neil/data";
     read_only = false;
   };
   "media-downloads" = {

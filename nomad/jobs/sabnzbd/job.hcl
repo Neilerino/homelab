@@ -5,10 +5,10 @@ job "sabnzbd" {
     group "sabnzbd-group" {
         count = 1
 
-        volume "downloads" {
+        volume "data" {
             type = "host"
             read_only = false
-            source = "sabnzbd-downloads"
+            source = "data"
         }
 
         volume "config" {
@@ -27,9 +27,9 @@ job "sabnzbd" {
             driver = "docker"
 
             volume_mount {
-                volume = "downloads"
+                volume = "data"
                 read_only = false
-                destination = "/downloads"
+                destination = "/data"
             }
 
             volume_mount {
@@ -47,6 +47,12 @@ job "sabnzbd" {
             resources {
                 cpu    = 1000
                 memory = 1024
+            }
+
+            env {
+                PUID = "1003"
+                PGID = "1000"
+                UMASK = "002"
             }
         }
     }
