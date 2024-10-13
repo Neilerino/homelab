@@ -74,6 +74,8 @@
 
   users.users.neil = {
     isNormalUser = true;
+    uid = 1000;
+    group = "users";
     home = "/home/neil";
     extraGroups = ["wheel" "networkmanager" "docker"];
   };
