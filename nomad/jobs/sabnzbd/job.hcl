@@ -2,7 +2,7 @@ job "sabnzbd" {
     datacenters = ["dc1"]
     type        = "service"
 
-    group = "sabnzbd-group" {
+    group "sabnzbd-group" {
         count = 1
 
         volume "downloads" {
