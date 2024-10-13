@@ -39,10 +39,6 @@ job "jellyseer" {
             env {
                 PORT = "5055"
             }
-            env {
-                PUID = "1000"
-                PGID = "1000"
-            }
         }
     }
 }
