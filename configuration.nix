@@ -58,12 +58,12 @@
 
   systemd.tmpfiles.rules = [
     # Create and set ownership/permissions for Sonarr directories
-    "d /home/neil/radarr/config 0755 1001 1000 -"
-    "d /home/neil/media/tv 0755 1001 1000 -"
+    "d /home/neil/radarr/config 0755 1002 1000 -"
+    "d /home/neil/media/tv 0755 1002 1000 -"
     
     # Create and set ownership/permissions for Radarr directories
-    "d /home/neil/sonarr/config 0755 1002 1000 -"
-    "d /home/neil/media/movies 0755 1002 1000 -"
+    "d /home/neil/sonarr/config 0755 1001 1000 -"
+    "d /home/neil/media/movies 0755 1001 1000 -"
   ];
 
 
