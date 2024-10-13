@@ -1,29 +1,35 @@
-job "sabnzbd" {
+job "sonarr" {
     datacenters = ["dc1"]
     type        = "service"
 
-    group "sabnzbd-group" {
+    group "sonarr-group" {
         count = 1
 
         volume "downloads" {
             type = "host"
             read_only = false
-            source = "sabnzbd-downloads"
+            source = "media-downloads"
+        }
+
+        volume "tv" {
+            type = "host"
+            read_only = false
+            source = "media-tv"
         }
 
         volume "config" {
             type = "host"
             read_only = false
-            source = "sabnzbd-config"
+            source = "sonarr-config"
         }
 
         network {
             port "http" {
-                static = 8080
+                static = 8989
             }
         }
 
-        task "sabnzbd" {
+        task "sonarr" {
             driver = "docker"
 
             volume_mount {
@@ -33,13 +39,19 @@ job "sabnzbd" {
             }
 
             volume_mount {
+                volume = "tv"
+                read_only = false
+                destination = "/tv"
+            }
+
+            volume_mount {
                 volume = "config"
                 read_only = false
                 destination = "/config"
             }
 
             config {
-                image = "linuxserver/sabnzbd:latest"
+                image = "lscr.io/linuxserver/sonarr:latest"
                 ports = ["http"]
             }
 

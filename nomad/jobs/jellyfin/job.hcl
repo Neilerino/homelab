@@ -8,7 +8,7 @@ job "jellyfin" {
     volume "media" {
        type = "host"
        read_only = false
-       source = "jellyfin-media"
+       source = "media-base"
     }
     
     volume "cache" {

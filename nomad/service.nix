@@ -4,8 +4,20 @@ let
   jellyfinVols = import ./jobs/jellyfin/volume.nix { inherit pkgs; };
   sabnzbdVols = import ./jobs/sabnzbd/volume.nix { inherit pkgs; };
   jellyseerVols = import ./jobs/jellyseer/volume.nix { inherit pkgs; };
+  sonarrVols = import ./jobs/sonarr/volume.nix { inherit pkgs; };
+  radarrVols = import ./jobs/radarr/volume.nix { inherit pkgs; };
+  prowlarrVols = import ./jobs/prowlarr/volume.nix { inherit pkgs; };
+  sharedVols = import ./jobs/shared/volume.nix { inherit pkgs; };
 
-  volumes = jellyfinVols // sabnzbdVols // jellyseerVols;
+  volumes = (
+    jellyfinVols // 
+    sabnzbdVols //
+    jellyseerVols // 
+    sonarrVols //
+    radarrVols //
+    prowlarrVols //
+    sharedVols
+  );
 
 in
 {

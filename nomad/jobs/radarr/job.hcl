@@ -1,29 +1,35 @@
-job "sabnzbd" {
+job "radarr" {
     datacenters = ["dc1"]
     type        = "service"
 
-    group "sabnzbd-group" {
+    group "radarr-group" {
         count = 1
 
         volume "downloads" {
             type = "host"
             read_only = false
-            source = "sabnzbd-downloads"
+            source = "media-downloads"
+        }
+
+        volume "movies" {
+            type = "host"
+            read_only = false
+            source = "media-movies"
         }
 
         volume "config" {
             type = "host"
             read_only = false
-            source = "sabnzbd-config"
+            source = "radarr-config"
         }
 
         network {
             port "http" {
-                static = 8080
+                static = 7878
             }
         }
 
-        task "sabnzbd" {
+        task "radarr" {
             driver = "docker"
 
             volume_mount {
@@ -33,13 +39,19 @@ job "sabnzbd" {
             }
 
             volume_mount {
+                volume = "movies"
+                read_only = false
+                destination = "/movies"
+            }
+
+            volume_mount {
                 volume = "config"
                 read_only = false
                 destination = "/config"
             }
 
             config {
-                image = "linuxserver/sabnzbd:latest"
+                image = "lscr.io/linuxserver/radarr:latest"
                 ports = ["http"]
             }
 
