@@ -50,7 +50,7 @@ job "sabnzbd" {
             }
 
             env {
-                PUID = "1003"
+                PUID = "1004"
                 PGID = "1000"
                 UMASK = "002"
             }
