@@ -12,9 +12,10 @@ job "heimdall" {
         }
 
         network {
+            mode = "bridge"
             port "http" {
                 to = 80
-                from = 83
+                static = 83
             }
         }
 
