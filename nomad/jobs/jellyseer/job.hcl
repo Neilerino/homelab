@@ -12,6 +12,7 @@ job "jellyseer" {
         }
 
         network {
+            mode = "host"
             port "http" {
                 static = 5055
             }

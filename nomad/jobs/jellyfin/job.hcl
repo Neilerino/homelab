@@ -24,6 +24,7 @@ job "jellyfin" {
     }
 
     network {
+      mode = "host"
       port "http" {
         static = 8096
       }
