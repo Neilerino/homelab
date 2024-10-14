@@ -36,16 +36,6 @@
     gid = 1000;
   };
 
-  users.users.sonarr = {
-    isSystemUser = true;
-    uid = 1002;                # Set the UID to 1000
-    group = "media";            # Primary group
-    extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/sonarr";   # Define home directory
-    createHome = true;          # Create the home directory if it doesn't exist
-    shell = pkgs.bash;          # Optional: set the default shell
-  };
-
   users.users.radarr = {
     isSystemUser = true;
     uid = 1001;                # Set the UID to 1000
@@ -55,6 +45,16 @@
     createHome = true;          # Create the home directory if it doesn't exist
     shell = pkgs.bash;          # Optional: set the default shell
   };
+
+    users.users.sonarr = {
+      isSystemUser = true;
+      uid = 1002;                # Set the UID to 1000
+      group = "media";            # Primary group
+      extraGroups = [ "docker" ]; # Add to the Docker group if needed
+      home = "/var/lib/sonarr";   # Define home directory
+      createHome = true;          # Create the home directory if it doesn't exist
+      shell = pkgs.bash;          # Optional: set the default shell
+    };
 
   users.users.jellyfin = {
     isSystemUser = true;

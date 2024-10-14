@@ -56,7 +56,7 @@ job "radarr" {
             }
 
             env {
-                PUID = "1002"
+                PUID = "1001"
                 PGID = "1000"
                 UMASK = "002"
             }
