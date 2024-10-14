@@ -13,7 +13,7 @@ job "heimdall" {
 
         network {
             port "http" {
-                static = 80
+                static = 83
             }
         }
 
