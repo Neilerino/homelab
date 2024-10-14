@@ -99,11 +99,8 @@
 
   services.tailscale = {
     enable = true;
-    authKeyFile = "./secrets/tailscale";
-    useRoutingFeatures = "server";
+    authKeyFile = ./secrets/tailscale;
   };
-
-  environment.variables.TAILSCALE_KEY = [ (builtins.readFile ./secrets/tailscale) ];
 
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
@@ -124,8 +121,6 @@
         exit 0
       fi
 
-      # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up -authkey ${environment.variables.TAILSCALE_KEY}
       ${tailscale}/bin/tailscale serve -bg --http=5555 http://zapdos.lab:8096
       ${tailscale}/bin/tailscale serve -bg --http=6666 http://zapdos.lab:5055
     '';
