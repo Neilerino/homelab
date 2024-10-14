@@ -104,8 +104,8 @@
 
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
-    after = [ "network-pre.target" "tailscale.service" "environment.variables.TAILSCALE_KEY" ];
-    wants = [ "network-pre.target" "tailscale.service" "environment.variables.TAILSCALE_KEY" ];
+    after = [ "network-pre.target" "tailscale.service" ];
+    wants = [ "network-pre.target" "tailscale.service" ];
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig.Type = "oneshot";
