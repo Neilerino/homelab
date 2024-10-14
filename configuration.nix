@@ -97,30 +97,19 @@
     "d /srv/streaming/data/incomplete 0755 1004 1000 -"
   ];
 
+
+
   services.tailscale = {
     enable = true;
+    openFirewall = true;
     authKeyFile = /etc/nixos/secrets/tailscale;
+    extraUpFlags = [
+      "--accept-dns=false"
+    ];
   };
 
-  systemd.services.tailscale-autoconnect = {
-    description = "Automatic connection to Tailscale";
-    after = [ "network-pre.target" "tailscale.service" ];
-    wants = [ "network-pre.target" "tailscale.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig.Type = "oneshot";
-
-    # have the job run this shell script
-    script = with pkgs; ''
-      # wait for tailscaled to settle
-      sleep 2
-
-      # check if we are already authenticated to tailscale
-      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
-      if [ $status = "Running" ]; then # if so, then do nothing
-        exit 0
-      fi
-
+  system.activationScripts = {
+    tailscaleServe = ''
       ${tailscale}/bin/tailscale serve -bg --http=5555 http://zapdos.lab:8096
       ${tailscale}/bin/tailscale serve -bg --http=6666 http://zapdos.lab:5055
     '';
