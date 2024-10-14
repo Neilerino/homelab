@@ -108,13 +108,6 @@
     ];
   };
 
-  system.activationScripts = {
-    tailscaleServe = ''
-      tailscale serve -bg --http=5555 http://zapdos.lab:8096
-      tailscale serve -bg --http=6666 http://zapdos.lab:5055
-    '';
-  };
-
   services.nomad = import ./nomad/service.nix { inherit pkgs; };
 
   time.timeZone = "America/St_Johns";
