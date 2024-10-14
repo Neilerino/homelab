@@ -14,6 +14,7 @@
     nomad-driver-podman
     damon
     pkgs.nomad
+    pkgs.tailscale
   ];
   environment.variables.EDITOR = "vim";
 
@@ -95,6 +96,38 @@
     "d /srv/streaming/data/downloads 0755 1004 1000 -"
     "d /srv/streaming/data/incomplete 0755 1004 1000 -"
   ];
+
+  services.tailscale = {
+    enable = true;
+    authKeyFile = "./secrets/tailscale";
+    useRoutingFeatures = "server";
+  };
+
+  environment.variables.TAILSCALE_KEY = [ (builtins.readFile ./secrets/tailscale) ];
+
+  systemd.services.tailscale-autoconnect = {
+    description = "Automatic connection to Tailscale";
+    after = [ "network-pre.target" "tailscale.service" "environment.variables.TAILSCALE_KEY" ];
+    wants = [ "network-pre.target" "tailscale.service" "environment.variables.TAILSCALE_KEY" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig.Type = "oneshot";
+
+    # have the job run this shell script
+    script = with pkgs; ''
+      # wait for tailscaled to settle
+      sleep 2
+
+      # check if we are already authenticated to tailscale
+      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+      if [ $status = "Running" ]; then # if so, then do nothing
+        exit 0
+      fi
+
+      # otherwise authenticate with tailscale
+      ${tailscale}/bin/tailscale up -authkey ${environment.variables.TAILSCALE_KEY}
+    '';
+  };
 
   services.nomad = import ./nomad/service.nix { inherit pkgs; };
 

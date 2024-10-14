@@ -57,8 +57,8 @@ job "jellyfin" {
       }
 
       resources {
-        cpu    = 500    # 500 MHz
-        memory = 1024    # 512 MB
+        cpu    = 500
+        memory = 2048
       }
 
       env {
