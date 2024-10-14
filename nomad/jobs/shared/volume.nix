@@ -2,7 +2,7 @@
 
 {
   "data" = {
-    path = "/home/neil/data";
+    path = "/srv/streaming/data";
     read_only = false;
   };
   "media-downloads" = {
