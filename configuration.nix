@@ -38,45 +38,49 @@
 
   users.users.radarr = {
     isSystemUser = true;
-    uid = 1001; # Set the UID to 1000
-    group = "media"; # Primary group
-    extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/radarr"; # Define home directory
-    createHome = true; # Create the home directory if it doesn't exist
-    shell = pkgs.bash; # Optional: set the default shell
+    uid = 1001;
+    group = "media";
+    extraGroups = [ "docker" ];
+    home = "/var/lib/radarr";
+    createHome = true;
+    shell = pkgs.bash;
   };
 
   users.users.sonarr = {
     isSystemUser = true;
-    uid = 1002; # Set the UID to 1000
-    group = "media"; # Primary group
-    extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/sonarr"; # Define home directory
-    createHome = true; # Create the home directory if it doesn't exist
-    shell = pkgs.bash; # Optional: set the default shell
+    uid = 1002;
+    group = "media";
+    extraGroups = [ "docker" ];
+    home = "/var/lib/sonarr";
+    createHome = true;
+    shell = pkgs.bash;
   };
 
   users.users.jellyfin = {
     isSystemUser = true;
-    uid = 1003; # Set the UID to 1000
-    group = "media"; # Primary group
-    extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/jellyfin"; # Define home directory
-    createHome = true; # Create the home directory if it doesn't exist
-    shell = pkgs.bash; # Optional: set the default shell
+    uid = 1003;
+    group = "media";
+    extraGroups = [ "docker" ];
+    home = "/var/lib/jellyfin";
+    createHome = true;
+    shell = pkgs.bash;
   };
 
   users.users.sabnzbd = {
     isSystemUser = true;
-    uid = 1004; # Set the UID to 1000
-    group = "media"; # Primary group
-    extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/sabnzbd"; # Define home directory
-    createHome = true; # Create the home directory if it doesn't exist
-    shell = pkgs.bash; # Optional: set the default shell
+    uid = 1004;
+    group = "media";
+    extraGroups = [ "docker" ];
+    home = "/var/lib/sabnzbd";
+    createHome = true;
+    shell = pkgs.bash;
   };
 
   systemd.tmpfiles.rules = [
+    "mkdir -p /srv/caddy/data"
+    "mkdir -p /srv/caddy/config"
+    "yes | cp -f /etc/nixos/nomad/jobs/caddy/Caddyfile /srv/caddy/Caddyfile"
+
     # Create and set ownership/permissions for data directory
     "d /srv/streaming/data 0755 1000 1000 -"
 
