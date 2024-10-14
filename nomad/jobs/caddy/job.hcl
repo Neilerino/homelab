@@ -14,7 +14,13 @@ job "caddy" {
             }
         }
 
-        volume "data" {
+        volume "caddy-config" {
+            type = "host"
+            read_only = false
+            source = "caddy-config"
+        }
+
+        volume "caddy-data" {
             type = "host"
             read_only = false
             source = "caddy-data"
