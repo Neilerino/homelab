@@ -99,7 +99,7 @@
 
   services.tailscale = {
     enable = true;
-    authKeyFile = ./secrets/tailscale;
+    authKeyFile = /etc/nixos/secrets/tailscale;
   };
 
   systemd.services.tailscale-autoconnect = {
