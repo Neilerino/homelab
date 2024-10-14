@@ -30,6 +30,9 @@ in
   extraSettingsPlugins = [ pkgs.nomad-driver-podman ];
   enableDocker = true;
   dropPrivileges = false;
+  serviceConfig = {
+    After = [ "systemd-tmpfiles-setup.service" ];
+  };
   settings = {
     bind_addr = "0.0.0.0";
     advertise = {
