@@ -126,6 +126,8 @@
 
       # otherwise authenticate with tailscale
       ${tailscale}/bin/tailscale up -authkey ${environment.variables.TAILSCALE_KEY}
+      ${tailscale}/bin/tailscale serve -bg --http=5555 http://zapdos.lab:8096
+      ${tailscale}/bin/tailscale serve -bg --http=6666 http://zapdos.lab:5055
     '';
   };
 
