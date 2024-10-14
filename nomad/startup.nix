@@ -10,9 +10,11 @@ let
   ];
 
   # Generate the ExecStart commands
-  nomadJobsCommands = lib.concatStringsSep "\n" (map (jobPath: ''
-    ${pkgs.nomad}/bin/nomad job run ${jobPath}
-  '') nomadJobs);
+  nomadJobsCommands = lib.concatStringsSep "\n" (map
+    (jobPath: ''
+      ${pkgs.nomad}/bin/nomad job run ${jobPath}
+    '')
+    nomadJobs);
 in
 {
   # Ensure Nomad is enabled

@@ -21,11 +21,11 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   networking.hostName = "zapdos";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  home-manager.users.neil = import ./home-manager/home.nix;  
+  home-manager.users.neil = import ./home-manager/home.nix;
 
   services.nomad = import ./nomad/service.nix { inherit pkgs; };
 
@@ -38,42 +38,42 @@
 
   users.users.radarr = {
     isSystemUser = true;
-    uid = 1001;                # Set the UID to 1000
-    group = "media";            # Primary group
+    uid = 1001; # Set the UID to 1000
+    group = "media"; # Primary group
     extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/radarr";   # Define home directory
-    createHome = true;          # Create the home directory if it doesn't exist
-    shell = pkgs.bash;          # Optional: set the default shell
+    home = "/var/lib/radarr"; # Define home directory
+    createHome = true; # Create the home directory if it doesn't exist
+    shell = pkgs.bash; # Optional: set the default shell
   };
 
-    users.users.sonarr = {
-      isSystemUser = true;
-      uid = 1002;                # Set the UID to 1000
-      group = "media";            # Primary group
-      extraGroups = [ "docker" ]; # Add to the Docker group if needed
-      home = "/var/lib/sonarr";   # Define home directory
-      createHome = true;          # Create the home directory if it doesn't exist
-      shell = pkgs.bash;          # Optional: set the default shell
-    };
+  users.users.sonarr = {
+    isSystemUser = true;
+    uid = 1002; # Set the UID to 1000
+    group = "media"; # Primary group
+    extraGroups = [ "docker" ]; # Add to the Docker group if needed
+    home = "/var/lib/sonarr"; # Define home directory
+    createHome = true; # Create the home directory if it doesn't exist
+    shell = pkgs.bash; # Optional: set the default shell
+  };
 
   users.users.jellyfin = {
     isSystemUser = true;
-    uid = 1003;                # Set the UID to 1000
-    group = "media";            # Primary group
+    uid = 1003; # Set the UID to 1000
+    group = "media"; # Primary group
     extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/jellyfin";   # Define home directory
-    createHome = true;          # Create the home directory if it doesn't exist
-    shell = pkgs.bash;          # Optional: set the default shell
+    home = "/var/lib/jellyfin"; # Define home directory
+    createHome = true; # Create the home directory if it doesn't exist
+    shell = pkgs.bash; # Optional: set the default shell
   };
 
   users.users.sabnzbd = {
     isSystemUser = true;
-    uid = 1004;                # Set the UID to 1000
-    group = "media";            # Primary group
+    uid = 1004; # Set the UID to 1000
+    group = "media"; # Primary group
     extraGroups = [ "docker" ]; # Add to the Docker group if needed
-    home = "/var/lib/sabnzbd";   # Define home directory
-    createHome = true;          # Create the home directory if it doesn't exist
-    shell = pkgs.bash;          # Optional: set the default shell
+    home = "/var/lib/sabnzbd"; # Define home directory
+    createHome = true; # Create the home directory if it doesn't exist
+    shell = pkgs.bash; # Optional: set the default shell
   };
 
   systemd.tmpfiles.rules = [
@@ -83,7 +83,7 @@
     # Create and set ownership/permissions for Sonarr directories
     "d /home/neil/radarr/config 0755 1001 1000 -"
     "d /srv/streaming/data/movies 0755 1001 1000 -"
-    
+
     # Create and set ownership/permissions for Radarr directories
     "d /home/neil/sonarr/config 0755 1002 1000 -"
     "d /srv/streaming/data/tv 0755 1002 1000 -"
@@ -103,7 +103,7 @@
     uid = 1000;
     group = "users";
     home = "/home/neil";
-    extraGroups = ["wheel" "networkmanager" "docker"];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
   };
 
   services.openssh.enable = true;

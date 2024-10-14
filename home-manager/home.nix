@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [gh];
+  home.packages = with pkgs; [ gh ];
   home.stateVersion = "24.05";
 
   programs.vim = {
@@ -12,9 +12,9 @@
       set tabstop=4
       
     '';
-    plugins = with pkgs.vimPlugins; ["vim-nix"];
+    plugins = with pkgs.vimPlugins; [ "vim-nix" ];
   };
 
-  programs.git = (import ./git.nix {inherit pkgs;});
+  programs.git = (import ./git.nix { inherit pkgs; });
 }
 
