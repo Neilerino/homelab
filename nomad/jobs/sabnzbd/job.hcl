@@ -49,8 +49,6 @@ job "sabnzbd" {
                 memory = 1024
             }
 
-            user = "1003:1000"
-
             env {
                 PUID = "1003"
                 PGID = "1000"

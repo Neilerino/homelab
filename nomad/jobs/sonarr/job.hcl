@@ -49,8 +49,6 @@ job "sonarr" {
                 memory = 1024
             }
 
-            user = "1001:1000"
-
             env {
                 PUID = "1001"
                 PGID = "1000"
