@@ -56,6 +56,7 @@ job "jellyfin" {
         image = "jellyfin/jellyfin:latest"
         hostname = "jellyfin"
         ports = ["http"]
+        devices = ["/dev/dri:/dev/dri"]
       }
 
       resources {
@@ -64,6 +65,7 @@ job "jellyfin" {
       }
 
       env {
+        DOCKER_MODS = "linuxserver/mods:jellyfin-amd"
         PUID = "1004"
         PGID = "1000"
         UMASK = "002"
