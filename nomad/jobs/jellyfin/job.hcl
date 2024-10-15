@@ -56,7 +56,12 @@ job "jellyfin" {
         image = "jellyfin/jellyfin:latest"
         hostname = "jellyfin"
         ports = ["http"]
-        devices = ["/dev/dri:/dev/dri"]
+        devices = [
+          {
+            "HostPath" = "/dev/dri",
+            "ContainerPath" = "/dev/dri",
+          }
+        ]
       }
 
       resources {
