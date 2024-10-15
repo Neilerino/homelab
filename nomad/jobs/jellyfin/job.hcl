@@ -58,8 +58,8 @@ job "jellyfin" {
         ports = ["http"]
         devices = [
           {
-            "HostPath" = "/dev/dri",
-            "ContainerPath" = "/dev/dri",
+            "host_path" = "/dev/dri",
+            "container_path" = "/dev/dri",
           }
         ]
       }
