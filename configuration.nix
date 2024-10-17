@@ -29,7 +29,7 @@
   home-manager.users.neil = import ./home-manager/home.nix;
 
   networking.firewall.allowedTCPPorts = [ 4646 8096 8080 7878 5055 8989 9696 ];
-  networking.firewall.allowedUDPPorts = [ 8096 ];
+  networking.firewall.allowedUDPPorts = [ 8096 41641 ];
 
   users.groups.media = {
     gid = 1000;
