@@ -65,8 +65,8 @@ job "jellyfin" {
       }
 
       resources {
-        cpu    = 3000
-        memory = 5120
+        cpu    = 10000
+        memory = 6144
       }
 
       env {
