@@ -29,7 +29,7 @@ job "jellyseer" {
 
             config {
                 network_mode = "host"
-                image = "fallenbagel/jellyseerr"
+                image = "fallenbagel/jellyseerr:latest"
                 hostname = "jellyseer"
                 ports = ["http"]
             }
