@@ -97,6 +97,10 @@
     "d /mnt/mediadrive/data/incomplete 0755 1004 1000 -"
   ];
 
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   boot.supportedFilesystems = [ "ntfs" ];
   fileSystems."/mnt/mediadrive" =
     {
