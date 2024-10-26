@@ -2,7 +2,7 @@
 
 {
   "data" = {
-    path = "/srv/streaming/data";
+    path = "/mnt/mediadrive/data";
     read_only = false;
   };
   "media-downloads" = {

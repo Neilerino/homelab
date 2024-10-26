@@ -81,20 +81,20 @@
     "yes | cp -f /etc/nixos/nomad/jobs/caddy/Caddyfile /srv/caddy/Caddyfile"
 
     # Create and set ownership/permissions for data directory
-    "d /srv/streaming/data 0755 1000 1000 -"
+    "d /mnt/mediadrive/data 0755 1000 1000 -"
 
     # Create and set ownership/permissions for Sonarr directories
     "d /home/neil/radarr/config 0755 1001 1000 -"
-    "d /srv/streaming/data/movies 0755 1001 1000 -"
+    "d /mnt/mediadrive/data/movies 0755 1001 1000 -"
 
     # Create and set ownership/permissions for Radarr directories
     "d /home/neil/sonarr/config 0755 1002 1000 -"
-    "d /srv/streaming/data/tv 0755 1002 1000 -"
+    "d /mnt/mediadrive/data/tv 0755 1002 1000 -"
 
     # Create and set ownership/permissions for sabnzbd directories
     "d /home/neil/sabnzbd/config 0755 1004 1000 -"
-    "d /srv/streaming/data/downloads 0755 1004 1000 -"
-    "d /srv/streaming/data/incomplete 0755 1004 1000 -"
+    "d /mnt/mediadrive/data/downloads 0755 1004 1000 -"
+    "d /mnt/mediadrive/data/incomplete 0755 1004 1000 -"
   ];
 
   boot.supportedFilesystems = [ "ntfs" ];

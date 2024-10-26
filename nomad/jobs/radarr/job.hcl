@@ -5,12 +5,6 @@ job "radarr" {
     group "radarr-group" {
         count = 1
 
-        volume "downloads" {
-            type = "host"
-            read_only = false
-            source = "media-downloads"
-        }
-
         volume "data" {
             type = "host"
             read_only = false
