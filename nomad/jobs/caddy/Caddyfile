@@ -1,7 +1,0 @@
-https://jellyfin.neil {
-    reverse_proxy zapdos.lab:8096
-}
-
-https://jellyseerr.neil {
-    reverse_proxy zapdos.lab:5055
-}

@@ -45,8 +45,8 @@ job "sabnzbd" {
             }
 
             resources {
-                cpu    = 1000
-                memory = 1024
+                cpu    = 5000
+                memory = 3072
             }
 
             env {
