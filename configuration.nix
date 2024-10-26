@@ -97,7 +97,13 @@
     "d /srv/streaming/data/incomplete 0755 1004 1000 -"
   ];
 
-
+  boot.supportedFilesystems = [ "ntfs" ];
+  fileSystems."/mnt/mediadrive" =
+    {
+      device = "/dev/sda1";
+      fsType = "ntfs-3g";
+      options = [ "rw" "uid=1000" ];
+    };
 
   services.tailscale = {
     enable = true;
