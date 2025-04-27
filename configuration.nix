@@ -15,7 +15,7 @@
     nomad-driver-podman
     damon
     pkgs.nomad
-    # pkgs.tailscale
+    pkgs.tailscale
   ];
   environment.variables.EDITOR = "vim";
 
@@ -38,7 +38,7 @@
     "yes | cp -f /etc/nixos/nomad/jobs/caddy/Caddyfile /srv/caddy/Caddyfile"
 
     # Create and set ownership/permissions for tailscale dirs
-    # "d /var/lib/tailscale 0755 1000 1000 -"
+    "d /var/lib/tailscale 0755 1000 1000 -"
   ];
 
   services.devmon.enable = true;
@@ -47,14 +47,14 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  # services.tailscale = {
-  #   enable = true;
-  #   openFirewall = true;
-  #   authKeyFile = /etc/nixos/secrets/tailscale;
-  #   extraUpFlags = [
-  #     "--accept-dns=false"
-  #   ];
-  # };
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    authKeyFile = /etc/nixos/secrets/tailscale;
+    extraUpFlags = [
+      "--accept-dns=false"
+    ];
+  };
 
   services.nomad = import ./nomad/service.nix { inherit pkgs; };
 
