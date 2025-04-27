@@ -7,6 +7,7 @@ let
     "/etc/nixos/nomad/jobs/radarr/job.hcl"
     "/etc/nixos/nomad/jobs/jellyseerr/job.hcl"
     "/etc/nixos/nomad/jobs/sabnzbd/job.hcl"
+    "/etc/nixos/nomad/jobs/tailscale/job.hcl"
   ];
 
   # Generate the ExecStart commands
