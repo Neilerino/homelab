@@ -36,9 +36,6 @@
     "mkdir -p /srv/caddy/data"
     "mkdir -p /srv/caddy/config"
     "yes | cp -f /etc/nixos/nomad/jobs/caddy/Caddyfile /srv/caddy/Caddyfile"
-
-    # Create and set ownership/permissions for tailscale dirs
-    "d /var/lib/tailscale 0755 1000 1000 -"
   ];
 
   services.devmon.enable = true;

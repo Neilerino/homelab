@@ -6,9 +6,7 @@ let
   jellyseerVols = import ./jobs/jellyseer/volume.nix { inherit pkgs; };
   sonarrVols = import ./jobs/sonarr/volume.nix { inherit pkgs; };
   radarrVols = import ./jobs/radarr/volume.nix { inherit pkgs; };
-  prowlarrVols = import ./jobs/prowlarr/volume.nix { inherit pkgs; };
   heimdallVols = import ./jobs/heimdall/volume.nix { inherit pkgs; };
-  caddyVols = import ./jobs/caddy/volume.nix { inherit pkgs; };
   sharedVols = import ./jobs/shared/volume.nix { inherit pkgs; };
 
   volumes = (
@@ -17,9 +15,7 @@ let
     jellyseerVols //
     sonarrVols //
     radarrVols //
-    prowlarrVols //
     heimdallVols //
-    caddyVols //
     sharedVols
   );
 
