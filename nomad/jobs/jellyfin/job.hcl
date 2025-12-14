@@ -64,19 +64,6 @@ job "jellyfin" {
         ]
       }
 
-      service {
-        name = "jellyfin"
-        port = "http"
-        address_mode = "host"
-
-        check {
-          type     = "http"
-          path     = "/health"
-          interval = "30s"
-          timeout  = "5s"
-        }
-      }
-
       restart {
         attempts = 3
         delay    = "15s"

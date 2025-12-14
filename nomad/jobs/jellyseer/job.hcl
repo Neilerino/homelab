@@ -34,19 +34,6 @@ job "jellyseer" {
                 ports = ["http"]
             }
 
-            service {
-                name = "jellyseer"
-                port = "http"
-                address_mode = "host"
-
-                check {
-                    type     = "http"
-                    path     = "/api/v1/status"
-                    interval = "30s"
-                    timeout  = "5s"
-                }
-            }
-
             restart {
                 attempts = 3
                 delay    = "15s"
