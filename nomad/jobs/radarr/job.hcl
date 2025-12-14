@@ -44,18 +44,6 @@ job "radarr" {
                 ports = ["http"]
             }
 
-            service {
-                name = "radarr"
-                port = "http"
-
-                check {
-                    type     = "http"
-                    path     = "/ping"
-                    interval = "30s"
-                    timeout  = "5s"
-                }
-            }
-
             restart {
                 attempts = 3
                 delay    = "15s"
