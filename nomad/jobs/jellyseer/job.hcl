@@ -37,6 +37,7 @@ job "jellyseer" {
             service {
                 name = "jellyseer"
                 port = "http"
+                address_mode = "host"
 
                 check {
                     type     = "http"

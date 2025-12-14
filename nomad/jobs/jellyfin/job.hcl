@@ -67,6 +67,7 @@ job "jellyfin" {
       service {
         name = "jellyfin"
         port = "http"
+        address_mode = "host"
 
         check {
           type     = "http"
