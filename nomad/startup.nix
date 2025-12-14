@@ -5,7 +5,7 @@ let
   nomadJobs = [
     "/etc/nixos/nomad/jobs/jellyfin/job.hcl"
     "/etc/nixos/nomad/jobs/radarr/job.hcl"
-    "/etc/nixos/nomad/jobs/jellyseerr/job.hcl"
+    "/etc/nixos/nomad/jobs/jellyseer/job.hcl"
     "/etc/nixos/nomad/jobs/sabnzbd/job.hcl"
     "/etc/nixos/nomad/jobs/sonarr/job.hcl"
     "/etc/nixos/nomad/jobs/heimdall/job.hcl"

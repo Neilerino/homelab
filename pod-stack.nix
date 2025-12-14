@@ -73,7 +73,8 @@
     "d /mnt/mediadrive/data/downloads 0755 1004 1000 -"
     "d /mnt/mediadrive/data/incomplete 0755 1004 1000 -"
 
-    # Recyclarr directories (config owner: radarr(1001), group: media(1000))
+    # Recyclarr directories (parent owned by neil, config owner: radarr(1001), group: media(1000))
+    "d /home/neil/recyclarr 0755 neil users -"
     "d /home/neil/recyclarr/config 0755 1001 1000 -"
   ];
 

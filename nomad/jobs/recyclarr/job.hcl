@@ -30,6 +30,7 @@ job "recyclarr" {
                 image = "recyclarr/recyclarr:latest"
                 hostname = "recyclarr"
                 args = ["sync"]
+                user = "1001:1000"
             }
 
             restart {
@@ -47,12 +48,6 @@ job "recyclarr" {
             resources {
                 cpu    = 500
                 memory = 512
-            }
-
-            env {
-                PUID = "1001"
-                PGID = "1000"
-                UMASK = "002"
             }
         }
     }
