@@ -29,9 +29,10 @@ job "recyclarr" {
             config {
                 image = "recyclarr/recyclarr:latest"
                 hostname = "recyclarr"
+                user = 1001:1000
                 args = ["sync"]
-                user = "1001:1000"
             }
+
 
             restart {
                 attempts = 2
