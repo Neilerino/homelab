@@ -7,6 +7,7 @@ let
   sonarrVols = import ./jobs/sonarr/volume.nix { inherit pkgs; };
   radarrVols = import ./jobs/radarr/volume.nix { inherit pkgs; };
   heimdallVols = import ./jobs/heimdall/volume.nix { inherit pkgs; };
+  recyclarrVols = import ./jobs/recyclarr/volume.nix { inherit pkgs; };
   sharedVols = import ./jobs/shared/volume.nix { inherit pkgs; };
 
   volumes = (
@@ -16,6 +17,7 @@ let
     sonarrVols //
     radarrVols //
     heimdallVols //
+    recyclarrVols //
     sharedVols
   );
 

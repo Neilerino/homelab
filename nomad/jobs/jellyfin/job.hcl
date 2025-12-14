@@ -64,6 +64,30 @@ job "jellyfin" {
         ]
       }
 
+      service {
+        name = "jellyfin"
+        port = "http"
+
+        check {
+          type     = "http"
+          path     = "/health"
+          interval = "30s"
+          timeout  = "5s"
+        }
+      }
+
+      restart {
+        attempts = 3
+        delay    = "15s"
+        interval = "5m"
+        mode     = "delay"
+      }
+
+      logs {
+        max_files     = 5
+        max_file_size = 10
+      }
+
       resources {
         cpu    = 10000
         memory = 6144
@@ -71,7 +95,7 @@ job "jellyfin" {
 
       env {
         DOCKER_MODS = "linuxserver/mods:jellyfin-amd"
-        PUID = "1004"
+        PUID = "1003"
         PGID = "1000"
         UMASK = "002"
       }

@@ -44,6 +44,29 @@ job "sabnzbd" {
                 ports = ["http"]
             }
 
+            service {
+                name = "sabnzbd"
+                port = "http"
+
+                check {
+                    type     = "tcp"
+                    interval = "30s"
+                    timeout  = "5s"
+                }
+            }
+
+            restart {
+                attempts = 3
+                delay    = "15s"
+                interval = "5m"
+                mode     = "delay"
+            }
+
+            logs {
+                max_files     = 5
+                max_file_size = 10
+            }
+
             resources {
                 cpu    = 5000
                 memory = 3072

@@ -9,6 +9,7 @@ let
     "/etc/nixos/nomad/jobs/sabnzbd/job.hcl"
     "/etc/nixos/nomad/jobs/sonarr/job.hcl"
     "/etc/nixos/nomad/jobs/heimdall/job.hcl"
+    "/etc/nixos/nomad/jobs/recyclarr/job.hcl"
   ];
 
   # Generate the ExecStart commands

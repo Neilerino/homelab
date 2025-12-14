@@ -44,6 +44,30 @@ job "radarr" {
                 ports = ["http"]
             }
 
+            service {
+                name = "radarr"
+                port = "http"
+
+                check {
+                    type     = "http"
+                    path     = "/ping"
+                    interval = "30s"
+                    timeout  = "5s"
+                }
+            }
+
+            restart {
+                attempts = 3
+                delay    = "15s"
+                interval = "5m"
+                mode     = "delay"
+            }
+
+            logs {
+                max_files     = 5
+                max_file_size = 10
+            }
+
             resources {
                 cpu    = 1000
                 memory = 1024
