@@ -33,18 +33,6 @@ job "heimdall" {
                 ports = ["http"]
             }
 
-            service {
-                name = "heimdall"
-                port = "http"
-
-                check {
-                    type     = "http"
-                    path     = "/"
-                    interval = "30s"
-                    timeout  = "5s"
-                }
-            }
-
             restart {
                 attempts = 3
                 delay    = "15s"
