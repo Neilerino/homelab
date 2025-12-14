@@ -38,7 +38,8 @@ job "heimdall" {
                 port = "http"
 
                 check {
-                    type     = "tcp"
+                    type     = "http"
+                    path     = "/"
                     interval = "30s"
                     timeout  = "5s"
                 }
