@@ -53,7 +53,7 @@
   services.tailscale = {
     enable = true;
     openFirewall = true;
-    authKeyFile = /etc/nixos/secrets/tailscale;
+    authKeyFile = "/etc/nixos/secrets/tailscale";
     extraUpFlags = [
       "--accept-dns=false"
     ];
