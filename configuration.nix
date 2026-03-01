@@ -32,6 +32,12 @@
   networking.firewall.allowedTCPPorts = [ 443 4646 8096 8080 7878 5055 8989 ];
   networking.firewall.allowedUDPPorts = [ 8096 41641 ];
 
+  # Only expose Jellyfin and Overseerr over Tailscale
+  networking.firewall.interfaces.tailscale0 = {
+    allowedTCPPorts = [ 8096 5055 ];
+    allowedUDPPorts = [ 8096 ];
+  };
+
   systemd.tmpfiles.rules = [
     "mkdir -p /srv/caddy/data"
     "mkdir -p /srv/caddy/config"
