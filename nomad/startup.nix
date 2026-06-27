@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let
+  nomadTokenFile = "/etc/nixos/secrets/nomad-management-token";
+
   serviceNomadJobs = [
     { name = "jellyfin"; path = "/etc/nixos/nomad/jobs/jellyfin/job.hcl"; }
     { name = "radarr"; path = "/etc/nixos/nomad/jobs/radarr/job.hcl"; }
@@ -28,13 +30,27 @@ let
     '')
     serviceNomadJobs);
 
+  nomadAuthScript = ''
+    export NOMAD_ADDR="http://127.0.0.1:4646"
+
+    if [ ! -r ${nomadTokenFile} ]; then
+      echo "Nomad ACL token file ${nomadTokenFile} is missing; skipping Nomad job commands."
+      echo "Bootstrap ACLs with 'nomad acl bootstrap', then save a management token to that file."
+      exit 0
+    fi
+
+    export NOMAD_TOKEN="$(< ${nomadTokenFile})"
+  '';
+
   nomadJobsScript = pkgs.writeShellScript "nomad-jobs" ''
     set -euo pipefail
+    ${nomadAuthScript}
     ${nomadJobsCommands}
   '';
 
   nomadRestartScript = pkgs.writeShellScript "nomad-jobs-daily-restart" ''
     set -euo pipefail
+    ${nomadAuthScript}
     ${nomadRestartCommands}
   '';
 in

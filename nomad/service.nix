@@ -26,6 +26,9 @@ in {
   dropPrivileges = false;
   settings = {
     bind_addr = "0.0.0.0";
+    acl = {
+      enabled = true;
+    };
     advertise = {
       http = "192.168.1.218:4646";
       rpc = "192.168.1.218:4647";
