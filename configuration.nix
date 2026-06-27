@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./nomad/startup.nix
-      ./pod-stack.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ./nomad/startup.nix
+    ./pod-stack.nix
+  ];
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -25,17 +27,17 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "zapdos";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager.users.neil = import ./home-manager/home.nix;
 
-  networking.firewall.allowedTCPPorts = [ 443 4646 8096 8080 7878 5055 8989 ];
-  networking.firewall.allowedUDPPorts = [ 8096 41641 ];
+  networking.firewall.allowedTCPPorts = [443 4646 8096 8080 7878 5055 8989];
+  networking.firewall.allowedUDPPorts = [8096 41641];
 
   # Only expose Jellyfin and Overseerr over Tailscale
   networking.firewall.interfaces.tailscale0 = {
-    allowedTCPPorts = [ 8096 5055 ];
-    allowedUDPPorts = [ 8096 ];
+    allowedTCPPorts = [8096 5055];
+    allowedUDPPorts = [8096];
   };
 
   systemd.tmpfiles.rules = [
@@ -48,7 +50,7 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 
   services.tailscale = {
     enable = true;
@@ -59,7 +61,7 @@
     ];
   };
 
-  services.nomad = import ./nomad/service.nix { inherit pkgs; };
+  services.nomad = import ./nomad/service.nix {inherit pkgs;};
 
   time.timeZone = "America/St_Johns";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -69,7 +71,7 @@
     uid = 1000;
     group = "users";
     home = "/home/neil";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = ["wheel" "networkmanager" "docker"];
   };
 
   services.openssh.enable = true;

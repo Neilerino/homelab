@@ -28,6 +28,7 @@ job "recyclarr" {
 
             config {
                 image = "recyclarr/recyclarr:latest"
+                force_pull = true
                 hostname = "recyclarr"
                 args = ["sync"]
             }

@@ -30,6 +30,7 @@ job "jellyseer" {
             config {
                 network_mode = "host"
                 image = "fallenbagel/jellyseerr:latest"
+                force_pull = true
                 hostname = "jellyseer"
                 ports = ["http"]
             }

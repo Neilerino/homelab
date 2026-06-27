@@ -54,6 +54,7 @@ job "jellyfin" {
       config {
         network_mode = "host"
         image = "jellyfin/jellyfin:latest"
+        force_pull = true
         hostname = "jellyfin"
         ports = ["http"]
         devices = [
@@ -90,4 +91,3 @@ job "jellyfin" {
     }
   }
 }
-

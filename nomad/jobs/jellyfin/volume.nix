@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   "jellyfin-media" = {
     path = "/home/neil/jellyfin/media";
     read_only = false;

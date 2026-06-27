@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   enable = true;
   userName = "Neilerino";
   userEmail = "naw218@mun.ca";

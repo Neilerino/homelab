@@ -40,6 +40,7 @@ job "sonarr" {
 
             config {
                 image = "lscr.io/linuxserver/sonarr:latest"
+                force_pull = true
                 hostname = "sonarr"
                 ports = ["http"]
             }

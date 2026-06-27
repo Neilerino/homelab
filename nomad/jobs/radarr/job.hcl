@@ -40,6 +40,7 @@ job "radarr" {
 
             config {
                 image = "lscr.io/linuxserver/radarr:latest"
+                force_pull = true
                 hostname = "radarr"
                 ports = ["http"]
             }

@@ -1,31 +1,27 @@
-{ pkgs, ... }:
-
-let
-  jellyfinVols = import ./jobs/jellyfin/volume.nix { inherit pkgs; };
-  sabnzbdVols = import ./jobs/sabnzbd/volume.nix { inherit pkgs; };
-  jellyseerVols = import ./jobs/jellyseer/volume.nix { inherit pkgs; };
-  sonarrVols = import ./jobs/sonarr/volume.nix { inherit pkgs; };
-  radarrVols = import ./jobs/radarr/volume.nix { inherit pkgs; };
-  heimdallVols = import ./jobs/heimdall/volume.nix { inherit pkgs; };
-  recyclarrVols = import ./jobs/recyclarr/volume.nix { inherit pkgs; };
-  sharedVols = import ./jobs/shared/volume.nix { inherit pkgs; };
+{pkgs, ...}: let
+  jellyfinVols = import ./jobs/jellyfin/volume.nix {inherit pkgs;};
+  sabnzbdVols = import ./jobs/sabnzbd/volume.nix {inherit pkgs;};
+  jellyseerVols = import ./jobs/jellyseer/volume.nix {inherit pkgs;};
+  sonarrVols = import ./jobs/sonarr/volume.nix {inherit pkgs;};
+  radarrVols = import ./jobs/radarr/volume.nix {inherit pkgs;};
+  heimdallVols = import ./jobs/heimdall/volume.nix {inherit pkgs;};
+  recyclarrVols = import ./jobs/recyclarr/volume.nix {inherit pkgs;};
+  sharedVols = import ./jobs/shared/volume.nix {inherit pkgs;};
 
   volumes = (
-    jellyfinVols //
-    sabnzbdVols //
-    jellyseerVols //
-    sonarrVols //
-    radarrVols //
-    heimdallVols //
-    recyclarrVols //
-    sharedVols
+    jellyfinVols
+    // sabnzbdVols
+    // jellyseerVols
+    // sonarrVols
+    // radarrVols
+    // heimdallVols
+    // recyclarrVols
+    // sharedVols
   );
-
-in
-{
+in {
   enable = true;
   package = pkgs.nomad;
-  extraSettingsPlugins = [ pkgs.nomad-driver-podman ];
+  extraSettingsPlugins = [pkgs.nomad-driver-podman];
   enableDocker = true;
   dropPrivileges = false;
   settings = {

@@ -1,14 +1,11 @@
 # /Users/neilwadden/Programming/homelab/pod-stack.nix
 # Module for media stack (radarr, sonarr, jellyfin, sabnzbd) users and related config
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-
-{
+}: {
   # Define the media group
   users.groups.media = {
     gid = 1000; # Assuming GID 1000 is desired for this group
@@ -19,7 +16,7 @@
     isSystemUser = true;
     uid = 1001;
     group = "media";
-    extraGroups = [ "docker" ]; # Assuming 'docker' group exists or is defined elsewhere
+    extraGroups = ["docker"]; # Assuming 'docker' group exists or is defined elsewhere
     home = "/var/lib/radarr";
     createHome = true;
     shell = pkgs.bash;
@@ -29,7 +26,7 @@
     isSystemUser = true;
     uid = 1002;
     group = "media";
-    extraGroups = [ "docker" ];
+    extraGroups = ["docker"];
     home = "/var/lib/sonarr";
     createHome = true;
     shell = pkgs.bash;
@@ -39,7 +36,7 @@
     isSystemUser = true;
     uid = 1003;
     group = "media";
-    extraGroups = [ "docker" ];
+    extraGroups = ["docker"];
     home = "/var/lib/jellyfin";
     createHome = true;
     shell = pkgs.bash;
@@ -49,7 +46,7 @@
     isSystemUser = true;
     uid = 1004;
     group = "media";
-    extraGroups = [ "docker" ];
+    extraGroups = ["docker"];
     home = "/var/lib/sabnzbd";
     createHome = true;
     shell = pkgs.bash;
@@ -83,7 +80,6 @@
   fileSystems."/mnt/mediadrive" = {
     device = "/dev/sda1";
     fsType = "ntfs-3g";
-    options = [ "rw" "uid=1000" ]; # Assuming uid 1000 is the 'media' group or primary user access
+    options = ["rw" "uid=1000"]; # Assuming uid 1000 is the 'media' group or primary user access
   };
-
 }

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   "data" = {
     path = "/mnt/mediadrive/data";
     read_only = false;
