@@ -31,8 +31,8 @@
 
   home-manager.users.neil = import ./home-manager/home.nix;
 
-  networking.firewall.allowedTCPPorts = [443 5055];
-  networking.firewall.allowedUDPPorts = [41641];
+  networking.firewall.allowedTCPPorts = [443 5055 8096];
+  networking.firewall.allowedUDPPorts = [41641 8096];
 
   # Also expose Nomad, Jellyfin, and Overseerr over Tailscale
   networking.firewall.interfaces.tailscale0 = {
