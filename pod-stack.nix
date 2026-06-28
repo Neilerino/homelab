@@ -70,6 +70,11 @@
     "d /mnt/mediadrive/data/downloads 0755 1004 1000 -"
     "d /mnt/mediadrive/data/incomplete 0755 1004 1000 -"
 
+    # Jellyseerr/Seerr directories (container runs as uid 1000, group: media(1000))
+    "d /home/neil/jellyseer 0750 1000 1000 -"
+    "d /home/neil/jellyseer/config 0750 1000 1000 -"
+    "d /home/neil/jellyseer/config/logs 0750 1000 1000 -"
+
     # Recyclarr directories (parent owned by neil, config owner: radarr(1001), group: media(1000))
     "d /home/neil/recyclarr 0755 neil users -"
     "d /home/neil/recyclarr/config 0755 1001 1000 -"
