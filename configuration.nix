@@ -72,9 +72,19 @@
     group = "users";
     home = "/home/neil";
     extraGroups = ["wheel" "networkmanager" "docker"];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJme8MHsnEc0QwQjRTWyYXvrInXuk43RC731pZCbrlgB neil@homelab"
+    ];
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      KbdInteractiveAuthentication = false;
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   system.stateVersion = "24.05";
 }
