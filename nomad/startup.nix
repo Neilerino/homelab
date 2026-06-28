@@ -20,7 +20,9 @@ let
 
   nomadJobsCommands = lib.concatStringsSep "\n" (map
     (job: ''
-      ${pkgs.nomad}/bin/nomad job run ${job.path}
+      if ! ${pkgs.nomad}/bin/nomad job run -detach ${job.path}; then
+        echo "Failed to register Nomad job ${job.name}; continuing so system activation is not blocked."
+      fi
     '')
     nomadJobs);
 
@@ -66,6 +68,7 @@ in
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${nomadJobsScript}";
+      TimeoutStartSec = "5m";
     };
     wantedBy = [ "multi-user.target" ];
   };
