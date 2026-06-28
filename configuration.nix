@@ -40,6 +40,12 @@
     allowedUDPPorts = [8096];
   };
 
+  # Allow media containers to reach each other's host-published APIs without
+  # exposing those ports to the rest of the LAN.
+  networking.firewall.interfaces.docker0 = {
+    allowedTCPPorts = [8080 7878 8989];
+  };
+
   systemd.tmpfiles.rules = [
     "mkdir -p /srv/caddy/data"
     "mkdir -p /srv/caddy/config"
