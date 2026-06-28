@@ -29,8 +29,9 @@ job "jellyseer" {
 
             config {
                 network_mode = "host"
-                image = "fallenbagel/jellyseerr:latest"
+                image = "ghcr.io/seerr-team/seerr:latest"
                 force_pull = true
+                init = true
                 hostname = "jellyseer"
                 ports = ["http"]
             }
